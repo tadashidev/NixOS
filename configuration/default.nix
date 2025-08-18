@@ -34,6 +34,8 @@
     };
   };
 
+  programs.nix-index-database.comma.enable = true;
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;

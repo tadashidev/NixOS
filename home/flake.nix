@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     niri-flake = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,8 +39,10 @@
       inherit pkgs;
 
       modules = [
-        inputs.stylix.homeModules.stylix
+        inputs.nix-index-database.homeModules.nix-index
         inputs.niri-flake.homeModules.niri
+        inputs.stylix.homeModules.stylix
+
         ./home.nix
       ];
     };

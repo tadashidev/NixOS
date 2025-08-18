@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     niri-flake = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +23,9 @@
   }: {
     nixosConfigurations."Aqua" = nixpkgs.lib.nixosSystem {
       modules = [
+        inputs.nix-index-database.nixosModules.nix-index
         inputs.niri-flake.nixosModules.niri
+
         ./hosts/aqua.nix
         ./configuration
       ];
