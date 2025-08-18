@@ -5,9 +5,11 @@
     settings = {
       mainBar = {
         layer = "top";
-        exclusive = true;
+        exclusive = false;
 
         position = "top";
+
+        start_hidden = true;
 
         modules-left = ["tray" "wlr/taskbar"];
         modules-center = ["niri/window"];

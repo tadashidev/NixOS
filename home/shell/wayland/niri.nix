@@ -1,4 +1,9 @@
-{config, ...}: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}: {
   programs.niri = {
     settings = {
       outputs."eDP-1" = {
@@ -28,6 +33,7 @@
       screenshot-path = "~/Pictures/Screenshots/%Y-%m-%d_%H:%M:%S.png";
 
       spawn-at-startup = [
+        {command = [(lib.getExe (pkgs.callPackage (import ./niri-ipc) {}))];}
         {command = ["walker" "--gapplication-service"];}
         {command = ["sh" "-c" "sleep 3 && keepassxc"];}
       ];
@@ -38,7 +44,7 @@
         "Mod+Space".action = spawn "walker";
         "Mod+Return".action = spawn "ghostty";
 
-        "Mod+Escape".action = spawn "pkill" "--signal" "SIGUSR1" "waybar";
+        "Mod+Escape".action = toggle-overview;
 
         "Mod+X".action = close-window;
         "Mod+Shift+BackSpace".action = quit;
