@@ -48,5 +48,12 @@
     pkgs.samba # For Quickemu.
 
     pkgs.onlyoffice-desktopeditors
+
+    # Compression & decompression.
+    pkgs.xz
+    pkgs.zip
+    pkgs.unzip
+    pkgs.zstd
+    pkgs.brotli
   ];
 }
